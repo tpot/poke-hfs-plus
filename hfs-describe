@@ -2,6 +2,7 @@
 exec poke -L "$0" "$@"
 !#
 load argp;
+load gpt;
 load hfs;
 
 var args = argv'length < 1 ? ["--help"] : argv;
@@ -12,8 +13,12 @@ argp_parse :program "hfs-describe"
            :allow_unknown 1;
 
 var file = open(argv[0], IOS_M_RDONLY);
-var vol = HFSPlusVolumeHeader @ file : 0x5400#B;
+var gpt = GPT @ file : 0#B;
 
-printf("%Tv\n", vol);
+for (part in gpt.partitions where part.pt_guid.guid == GPT_PT_HFS_PLUS) {
+    var vol = HFSPlusVolume @ file : gpt.partitions[0].first_lba;
+    printf("%Tv\n", vol);
+    break;
+}
 
 close(file);

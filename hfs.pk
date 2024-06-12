@@ -95,3 +95,11 @@ type HFSPlusVolumeHeader = struct {
     HFSPlusForkData attributesFile;
     HFSPlusForkData startupFile;
 };
+
+type HFSPlusVolume = struct {
+    uint<8>[1024] reserved1;
+    HFSPlusVolumeHeader header;
+    // File storage for totalBlocks * blockSize  bytes
+    // HFSPlusVolumeHeader alternateHeader;
+    // uint<8>[512] reserved2;
+};
