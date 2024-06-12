@@ -44,6 +44,22 @@ type HFSVolumeAttributes = struct uint<32> {
     uint<16> reserved3;
 };
 
+type HFSPlusExtentDescriptor = struct {
+    uint32 startBlock;
+    uint32 blockCount;
+};
+
+type HFSPlusExtentRecord = struct {
+    HFSPlusExtentDescriptor[8] records;
+};
+
+type HFSPlusForkData = struct {
+    uint64 logicalSize;
+    uint32 clumpSize;
+    uint32 totalBlocks;
+    HFSPlusExtentRecord extents;
+};
+
 type HFSPlusVolumeHeader = struct {
     uint<8>[2] signature == ['H', '+'];
     big uint<16> version;
@@ -72,4 +88,10 @@ type HFSPlusVolumeHeader = struct {
     big uint<64> encodingsBitmap;
 
     big uint<32>[8] finderInfo;
+
+    HFSPlusForkData allocationFile;
+    HFSPlusForkData extentsFile;
+    HFSPlusForkData catalogFile;
+    HFSPlusForkData attributesFile;
+    HFSPlusForkData startupFile;
 };

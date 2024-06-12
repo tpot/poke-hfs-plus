@@ -39,6 +39,121 @@ HFSPlusVolumeHeader {
   nextCatalogID=#<kHFSRootFolderID>,
   writeCount=48U,
   encodingsBitmap=1UL,
-  finderInfo=[0U,0U,0U,0U,0U,...]
+  finderInfo=[0U,0U,0U,0U,0U,...],
+  allocationFile=HFSPlusForkData {
+    logicalSize=4503599627370496UL,
+    clumpSize=1048576U,
+    totalBlocks=16777216U,
+    extents=HFSPlusExtentRecord {
+      records=[HFSPlusExtentDescriptor {
+        startBlock=16777216U,
+        blockCount=16777216U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },...]
+    }
+  },
+  extentsFile=HFSPlusForkData {
+    logicalSize=63062489411092480UL,
+    clumpSize=14682880U,
+    totalBlocks=3187671040U,
+    extents=HFSPlusExtentRecord {
+      records=[HFSPlusExtentDescriptor {
+        startBlock=2197815296U,
+        blockCount=3187671040U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },...]
+    }
+  },
+  catalogFile=HFSPlusForkData {
+    logicalSize=63062489411092480UL,
+    clumpSize=14682880U,
+    totalBlocks=3187671040U,
+    extents=HFSPlusExtentRecord {
+      records=[HFSPlusExtentDescriptor {
+        startBlock=1795751936U,
+        blockCount=3187671040U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },...]
+    }
+  },
+  attributesFile=HFSPlusForkData {
+    logicalSize=63062489411092480UL,
+    clumpSize=14682880U,
+    totalBlocks=3187671040U,
+    extents=HFSPlusExtentRecord {
+      records=[HFSPlusExtentDescriptor {
+        startBlock=1090584576U,
+        blockCount=3187671040U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },...]
+    }
+  },
+  startupFile=HFSPlusForkData {
+    logicalSize=0UL,
+    clumpSize=0U,
+    totalBlocks=0U,
+    extents=HFSPlusExtentRecord {
+      records=[HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },HFSPlusExtentDescriptor {
+        startBlock=0U,
+        blockCount=0U
+      },...]
+    }
+  }
 }
 ```
