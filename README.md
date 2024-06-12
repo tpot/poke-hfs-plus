@@ -6,7 +6,6 @@ Description of the macOS [HFS Plus volume format](https://developer.apple.com/li
 
 ```
 $ ./hfs-describe test.dmg
-file: test.dmg
 HFSPlusVolumeHeader {
   signature=[72UB,43UB],
   version=4UH,

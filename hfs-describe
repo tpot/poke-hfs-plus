@@ -11,17 +11,9 @@ argp_parse :program "hfs-describe"
            :argv args
            :allow_unknown 1;
 
-fun describe = (string path) void: {
-  printf "file: %s\n", path;
+var file = open(argv[0], IOS_M_RDONLY);
+var vol = HFSPlusVolumeHeader @ file : 0x5400#B;
 
-  var file = open(path, IOS_M_RDONLY);
-  var vol = HFSPlusVolumeHeader @ file : 0x5400#B;
+printf("%Tv\n", vol);
 
-  printf("%Tv\n", vol);
-
-  close(file);
-}
-
-for (path in argv) {
-  describe(path);
-}
+close(file);
