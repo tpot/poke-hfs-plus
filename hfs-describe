@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+exec poke -L "$0" "$@"
+!#
+load argp;
+load hfs;
+
+var args = argv'length < 1 ? ["--help"] : argv;
+
+argp_parse :program "hfs-describe"
+           :summary "displays some info about HFS filesystems"
+           :argv args
+           :allow_unknown 1;
+
+fun describe = (string path) void: {
+  printf "file: %s\n", path;
+
+  var file = open(path, IOS_M_RDONLY);
+  var vol = HFSPlusVolumeHeader @ file : 0x5400#B;
+
+  printf("%Tv\n", vol);
+
+  close(file);
+}
+
+for (path in argv) {
+  describe(path);
+}

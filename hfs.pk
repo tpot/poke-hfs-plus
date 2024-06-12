@@ -1,0 +1,75 @@
+var kHFSRootParentID            = 1,
+    kHFSRootFolderID            = 2,
+    kHFSExtentsFileID           = 3,
+    kHFSCatalogFileID           = 4,
+    kHFSBadBlockFileID          = 5,
+    kHFSAllocationFileID        = 6,
+    kHFSStartupFileID           = 7,
+    kHFSAttributesFileID        = 8,
+    kHFSRepairCatalogFileID     = 14,
+    kHFSBogusExtentFileID       = 15,
+    kHFSFirstUserCatalogNodeID  = 16;
+
+type HFSCatalogNodeID =  struct uint<32> {
+    uint<32> cnid;
+    method _print = void:
+      {
+        var s = cnid == kHFSRootParentID ? "kHFSRootParentID"
+            : kHFSRootFolderID ? "kHFSRootFolderID"
+            : kHFSExtentsFileID ? "kHFSExtentsFileID"
+            : kHFSCatalogFileID ? "kHFSCatalogFileID"
+            : kHFSBadBlockFileID ? "kHFSBadBlockFileID"
+            : kHFSAllocationFileID ? "kHFSAllocationFileID"
+            : kHFSStartupFileID ? "kHFSStartupFileID"
+            : kHFSAttributesFileID ? "kHFSAttributesFileID"
+            : kHFSRepairCatalogFileID ? "kHFSRepairCatalogFileID"
+            : kHFSBogusExtentFileID ? "kHFSBogusExtentFileID"
+            : kHFSFirstUserCatalogNodeID ? "kHFSFirstUserCatalogNodeID"
+            : "UNRECOGNIZED";
+        print "#<" + s + ">";
+      }
+  };
+
+type HFSVolumeAttributes = struct uint<32> {
+    uint<7> reserved1;
+    bit kHFSVolumeHardwareLockBit;
+    bit kHFSVolumeUnmountedBit;
+    bit kHFSVolumeSparedBlocksBit;
+    bit kHFSVolumeNoCacheRequiredBit;
+    bit kHFSBootVolumeInconsistentBit;
+    bit kHFSCatalogNodeIDsReusedBit;
+    bit kHFSVolumeJournaledBit;
+    bit reserved2;
+    bit kHFSVolumeSoftwareLockBit;
+    uint<16> reserved3;
+};
+
+type HFSPlusVolumeHeader = struct {
+    uint<8>[2] signature == ['H', '+'];
+    big uint<16> version;
+    HFSVolumeAttributes attributes;
+    big uint<32> lastMountedVersion;
+    big uint<32> journalInfoBlock;
+
+    big uint<32> createDate;
+    big uint<32> modifyDate;
+    big uint<32> backupDate;
+    big uint<32> checkedDate;
+
+    big uint<32> fileCount;
+    big uint<32> folderCount;
+
+    big uint<32> blockSize;
+    big uint<32> totalBlocks;
+    big uint<32> freeBlocks;
+
+    big uint<32> nextAllocation;
+    big uint<32> rsrcClumpSize;
+    big uint<32> dataClumpSize;
+    HFSCatalogNodeID nextCatalogID;
+
+    big uint<32> writeCount;
+    big uint<64> encodingsBitmap;
+
+    big uint<32>[8] finderInfo;
+};
