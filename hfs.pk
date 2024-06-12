@@ -39,7 +39,7 @@ type HFSVolumeAttributes = struct uint<32> {
     bit kHFSBootVolumeInconsistentBit;
     bit kHFSCatalogNodeIDsReusedBit;
     bit kHFSVolumeJournaledBit;
-    bit reserved2;
+    uint<1> reserved2;
     bit kHFSVolumeSoftwareLockBit;
     uint<16> reserved3;
 };
