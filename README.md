@@ -1,6 +1,6 @@
 # poke-hfs-plus
 
-Description of the macOS [HFS Plus volume format](https://developer.apple.com/library/archive/technotes/tn/tn1150.html#VolumeAttributes) in [GNU Poke](http://jemarch.net/poke).
+Description of the macOS [HFS Plus volume format](https://developer.apple.com/library/archive/technotes/tn/tn1150.html) in [GNU Poke](http://jemarch.net/poke).
 
 ## Usage
 
