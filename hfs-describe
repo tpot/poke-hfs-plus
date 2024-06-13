@@ -16,7 +16,7 @@ var file = open(argv[0], IOS_M_RDONLY);
 var gpt = GPT @ file : 0#B;
 
 for (part in gpt.partitions where part.pt_guid.guid == GPT_PT_HFS_PLUS) {
-    var vol = HFSPlusVolume @ file : gpt.partitions[0].first_lba;
+    var vol = HFSPlusVolume @ file : part.first_lba;
     printf("%Tv\n", vol);
     break;
 }
