@@ -27,8 +27,11 @@ type HFSCatalogNodeID =  struct uint<32> {
             : cnid == kHFSRepairCatalogFileID ? "kHFSRepairCatalogFileID"
             : cnid == kHFSBogusExtentFileID ? "kHFSBogusExtentFileID"
             : cnid == kHFSFirstUserCatalogNodeID ? "kHFSFirstUserCatalogNodeID"
-            : "UNRECOGNIZED";
-        print "#<" + s + ">";
+            : "";
+        if (s == "")
+          printf("%i32d", cnid);
+        else
+            print "#<" + s + ">";
       }
   };
 
