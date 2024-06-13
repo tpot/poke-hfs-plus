@@ -12,24 +12,25 @@ var kHFSRootParentID            = 1,
     kHFSBogusExtentFileID       = 15,
     kHFSFirstUserCatalogNodeID  = 16;
 
-type HFSCatalogNodeID =  struct uint<32> {
+type HFSCatalogNodeID = struct uint<32> {
     uint<32> cnid;
     method _print = void:
       {
-        var s = cnid == kHFSRootParentID ? "kHFSRootParentID"
-            : cnid == kHFSRootFolderID ? "kHFSRootFolderID"
-            : cnid == kHFSExtentsFileID ? "kHFSExtentsFileID"
-            : cnid == kHFSCatalogFileID ? "kHFSCatalogFileID"
-            : cnid == kHFSBadBlockFileID ? "kHFSBadBlockFileID"
-            : cnid == kHFSAllocationFileID ? "kHFSAllocationFileID"
-            : cnid == kHFSStartupFileID ? "kHFSStartupFileID"
-            : cnid == kHFSAttributesFileID ? "kHFSAttributesFileID"
-            : cnid == kHFSRepairCatalogFileID ? "kHFSRepairCatalogFileID"
-            : cnid == kHFSBogusExtentFileID ? "kHFSBogusExtentFileID"
+        var s =
+              cnid == kHFSRootParentID           ? "kHFSRootParentID"
+            : cnid == kHFSRootFolderID           ? "kHFSRootFolderID"
+            : cnid == kHFSExtentsFileID          ? "kHFSExtentsFileID"
+            : cnid == kHFSCatalogFileID          ? "kHFSCatalogFileID"
+            : cnid == kHFSBadBlockFileID         ? "kHFSBadBlockFileID"
+            : cnid == kHFSAllocationFileID       ? "kHFSAllocationFileID"
+            : cnid == kHFSStartupFileID          ? "kHFSStartupFileID"
+            : cnid == kHFSAttributesFileID       ? "kHFSAttributesFileID"
+            : cnid == kHFSRepairCatalogFileID    ? "kHFSRepairCatalogFileID"
+            : cnid == kHFSBogusExtentFileID      ? "kHFSBogusExtentFileID"
             : cnid == kHFSFirstUserCatalogNodeID ? "kHFSFirstUserCatalogNodeID"
             : "";
         if (s == "")
-          printf("%i32d", cnid);
+            printf("%i32d", cnid);
         else
             print "#<" + s + ">";
       }
@@ -70,30 +71,31 @@ type HFSPlusForkData = struct {
 
 type HFSPlusVolumeHeader = struct {
     uint<8>[2] signature == ['H', '+'];
-    uint<16> version;
+    uint<16>   version;
+
     HFSVolumeAttributes attributes;
-    char[4] lastMountedVersion;
-    uint<32> journalInfoBlock;
+    char[4]    lastMountedVersion;
+    uint<32>   journalInfoBlock;
 
-    uint<32> createDate;
-    uint<32> modifyDate;
-    uint<32> backupDate;
-    uint<32> checkedDate;
+    uint<32>   createDate;
+    uint<32>   modifyDate;
+    uint<32>   backupDate;
+    uint<32>   checkedDate;
 
-    uint<32> fileCount;
-    uint<32> folderCount;
+    uint<32>   fileCount;
+    uint<32>   folderCount;
 
-    uint<32> blockSize;
-    HFS_Block totalBlocks;
-    HFS_Block freeBlocks;
+    uint<32>    blockSize;
+    HFS_Block   totalBlocks;
+    HFS_Block   freeBlocks;
 
-    uint<32> nextAllocation;
-    uint<32> rsrcClumpSize;
-    uint<32> dataClumpSize;
+    uint<32>    nextAllocation;
+    uint<32>    rsrcClumpSize;
+    uint<32>    dataClumpSize;
     HFSCatalogNodeID nextCatalogID;
 
-    uint<32> writeCount;
-    uint<64> encodingsBitmap;
+    uint<32>    writeCount;
+    uint<64>    encodingsBitmap;
 
     uint<32>[8] finderInfo;
 
@@ -105,7 +107,7 @@ type HFSPlusVolumeHeader = struct {
 };
 
 type HFSPlusVolume = struct {
-    uint<8>[1024] reserved1;
+    uint<8>[1024]       reserved1;
     HFSPlusVolumeHeader header;
     // File storage for totalBlocks * blockSize  bytes
     // HFSPlusVolumeHeader alternateHeader;
