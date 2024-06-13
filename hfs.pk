@@ -44,9 +44,12 @@ type HFSVolumeAttributes = struct uint<32> {
     uint<16> reserved3;
 };
 
+unit HFS_BlockSize = 4096 * 8;  // Units are sized in bits, not bytes
+type HFS_Block = offset<uint<32>, HFS_BlockSize>;
+
 type HFSPlusExtentDescriptor = struct {
-    big uint32 startBlock;
-    big uint32 blockCount;
+    big HFS_Block startBlock;
+    big HFS_Block blockCount;
 };
 
 type HFSPlusExtentRecord = struct {
@@ -76,8 +79,8 @@ type HFSPlusVolumeHeader = struct {
     big uint<32> folderCount;
 
     big uint<32> blockSize;
-    big uint<32> totalBlocks;
-    big uint<32> freeBlocks;
+    big HFS_Block totalBlocks;
+    big HFS_Block freeBlocks;
 
     big uint<32> nextAllocation;
     big uint<32> rsrcClumpSize;
