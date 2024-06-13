@@ -15,16 +15,16 @@ type HFSCatalogNodeID =  struct uint<32> {
     method _print = void:
       {
         var s = cnid == kHFSRootParentID ? "kHFSRootParentID"
-            : kHFSRootFolderID ? "kHFSRootFolderID"
-            : kHFSExtentsFileID ? "kHFSExtentsFileID"
-            : kHFSCatalogFileID ? "kHFSCatalogFileID"
-            : kHFSBadBlockFileID ? "kHFSBadBlockFileID"
-            : kHFSAllocationFileID ? "kHFSAllocationFileID"
-            : kHFSStartupFileID ? "kHFSStartupFileID"
-            : kHFSAttributesFileID ? "kHFSAttributesFileID"
-            : kHFSRepairCatalogFileID ? "kHFSRepairCatalogFileID"
-            : kHFSBogusExtentFileID ? "kHFSBogusExtentFileID"
-            : kHFSFirstUserCatalogNodeID ? "kHFSFirstUserCatalogNodeID"
+            : cnid == kHFSRootFolderID ? "kHFSRootFolderID"
+            : cnid == kHFSExtentsFileID ? "kHFSExtentsFileID"
+            : cnid == kHFSCatalogFileID ? "kHFSCatalogFileID"
+            : cnid == kHFSBadBlockFileID ? "kHFSBadBlockFileID"
+            : cnid == kHFSAllocationFileID ? "kHFSAllocationFileID"
+            : cnid == kHFSStartupFileID ? "kHFSStartupFileID"
+            : cnid == kHFSAttributesFileID ? "kHFSAttributesFileID"
+            : cnid == kHFSRepairCatalogFileID ? "kHFSRepairCatalogFileID"
+            : cnid == kHFSBogusExtentFileID ? "kHFSBogusExtentFileID"
+            : cnid == kHFSFirstUserCatalogNodeID ? "kHFSFirstUserCatalogNodeID"
             : "UNRECOGNIZED";
         print "#<" + s + ">";
       }
