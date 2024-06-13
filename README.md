@@ -167,3 +167,11 @@ HFSPlusVolume {
   }
 }
 ```
+
+## Resources
+
+* [GNU Poke](https://www.jemarch.net/poke)
+  * [Pokology](https://pokology.org/index.html) community site for GNU Poke
+  * [Learn Poke in Y Minutes](https://pokology.org/learn-poke-in-y-minutes.html)
+* [HFS Plus volume format](https://developer.apple.com/library/archive/technotes/tn/tn1150.html)
+* [hfs_format.h](https://opensource.apple.com/source/xnu/xnu-124.8/bsd/hfs/hfs_format.h.auto.html) from [opensource.apple.com](https://opensource.apple.com/)
