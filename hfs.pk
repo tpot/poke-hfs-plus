@@ -11,7 +11,7 @@ var kHFSRootParentID            = 1,
     kHFSFirstUserCatalogNodeID  = 16;
 
 type HFSCatalogNodeID =  struct uint<32> {
-    uint<32> cnid;
+    big uint<32> cnid;
     method _print = void:
       {
         var s = cnid == kHFSRootParentID ? "kHFSRootParentID"
