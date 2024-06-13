@@ -4,6 +4,13 @@ Description of the macOS [HFS Plus volume format](https://developer.apple.com/li
 
 ## Usage
 
+Create a disk image (DMG) file to test on:
+```
+$ make test.dmg
+hdiutil create -size 10M -fs HFS+ -volname "test" test.dmg
+```
+
+Run describe script to dump HFS+ structures decoded from the image:
 ```
 $ ./hfs-describe test.dmg
 HFSPlusVolume {
