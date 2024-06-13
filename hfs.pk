@@ -1,3 +1,5 @@
+set_endian(ENDIAN_BIG);
+
 var kHFSRootParentID            = 1,
     kHFSRootFolderID            = 2,
     kHFSExtentsFileID           = 3,
@@ -11,7 +13,7 @@ var kHFSRootParentID            = 1,
     kHFSFirstUserCatalogNodeID  = 16;
 
 type HFSCatalogNodeID =  struct uint<32> {
-    big uint<32> cnid;
+    uint<32> cnid;
     method _print = void:
       {
         var s = cnid == kHFSRootParentID ? "kHFSRootParentID"
@@ -48,8 +50,8 @@ unit HFS_BlockSize = 4096 * 8;  // Units are sized in bits, not bytes
 type HFS_Block = offset<uint<32>, HFS_BlockSize>;
 
 type HFSPlusExtentDescriptor = struct {
-    big HFS_Block startBlock;
-    big HFS_Block blockCount;
+    HFS_Block startBlock;
+    HFS_Block blockCount;
 };
 
 type HFSPlusExtentRecord = struct {
@@ -57,40 +59,40 @@ type HFSPlusExtentRecord = struct {
 };
 
 type HFSPlusForkData = struct {
-    big uint64 logicalSize;
-    big uint32 clumpSize;
-    big uint32 totalBlocks;
+    uint64 logicalSize;
+    uint32 clumpSize;
+    uint32 totalBlocks;
     HFSPlusExtentRecord extents;
 };
 
 type HFSPlusVolumeHeader = struct {
     uint<8>[2] signature == ['H', '+'];
-    big uint<16> version;
+    uint<16> version;
     HFSVolumeAttributes attributes;
-    big uint<32> lastMountedVersion;
-    big uint<32> journalInfoBlock;
+    uint<32> lastMountedVersion;
+    uint<32> journalInfoBlock;
 
-    big uint<32> createDate;
-    big uint<32> modifyDate;
-    big uint<32> backupDate;
-    big uint<32> checkedDate;
+    uint<32> createDate;
+    uint<32> modifyDate;
+    uint<32> backupDate;
+    uint<32> checkedDate;
 
-    big uint<32> fileCount;
-    big uint<32> folderCount;
+    uint<32> fileCount;
+    uint<32> folderCount;
 
-    big uint<32> blockSize;
-    big HFS_Block totalBlocks;
-    big HFS_Block freeBlocks;
+    uint<32> blockSize;
+    HFS_Block totalBlocks;
+    HFS_Block freeBlocks;
 
-    big uint<32> nextAllocation;
-    big uint<32> rsrcClumpSize;
-    big uint<32> dataClumpSize;
+    uint<32> nextAllocation;
+    uint<32> rsrcClumpSize;
+    uint<32> dataClumpSize;
     HFSCatalogNodeID nextCatalogID;
 
-    big uint<32> writeCount;
-    big uint<64> encodingsBitmap;
+    uint<32> writeCount;
+    uint<64> encodingsBitmap;
 
-    big uint<32>[8] finderInfo;
+    uint<32>[8] finderInfo;
 
     HFSPlusForkData allocationFile;
     HFSPlusForkData extentsFile;
