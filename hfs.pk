@@ -69,7 +69,7 @@ type HFSPlusVolumeHeader = struct {
     uint<8>[2] signature == ['H', '+'];
     uint<16> version;
     HFSVolumeAttributes attributes;
-    uint<32> lastMountedVersion;
+    char[4] lastMountedVersion;
     uint<32> journalInfoBlock;
 
     uint<32> createDate;

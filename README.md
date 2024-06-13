@@ -31,7 +31,7 @@ HFSPlusVolume {
       kHFSVolumeHardwareLockBit=0T,
       reserved3=(uint<7>) 0
     },
-    lastMountedVersion=825241136U,
+    lastMountedVersion=[49UB,48UB,46UB,48UB],
     journalInfoBlock=0U,
     createDate=3801110353U,
     modifyDate=3801074353U,
