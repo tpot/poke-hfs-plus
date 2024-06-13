@@ -33,17 +33,17 @@ type HFSCatalogNodeID =  struct uint<32> {
   };
 
 type HFSVolumeAttributes = struct uint<32> {
-    uint<7> reserved1;
-    bit kHFSVolumeHardwareLockBit;
-    bit kHFSVolumeUnmountedBit;
-    bit kHFSVolumeSparedBlocksBit;
-    bit kHFSVolumeNoCacheRequiredBit;
-    bit kHFSBootVolumeInconsistentBit;
-    bit kHFSCatalogNodeIDsReusedBit;
-    bit kHFSVolumeJournaledBit;
-    uint<1> reserved2;
-    bit kHFSVolumeSoftwareLockBit;
-    uint<16> reserved3;
+    uint<16> reserved;                 // Bits 31-16
+    bit kHFSVolumeSoftwareLockBit;     // Bit 15
+    uint<1> reserved2;                 // Bit 14
+    bit kHFSVolumeJournaledBit;        // Bit 13
+    bit kHFSCatalogNodeIDsReusedBit;   // Bit 12
+    bit kHFSBootVolumeInconsistentBit; // Bit 11
+    bit kHFSVolumeNoCacheRequiredBit;  // Bit 10
+    bit kHFSVolumeSparedBlocksBit;     // Bit 9
+    bit kHFSVolumeUnmountedBit;        // Bit 8
+    bit kHFSVolumeHardwareLockBit;     // Bit 7
+    uint<7> reserved3;                 // Bits 6-0
 };
 
 unit HFS_BlockSize = 4096 * 8;  // Units are sized in bits, not bytes
